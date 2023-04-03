@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppProduto.Pages.ProdutosPage"
+             >
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" IsVisible="False"/>
+    </Shell.BackButtonBehavior>
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Label 
+            Text="Produtos"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+         />
+        <Grid ColumnDefinitions="1*,2*,1*,1*,1*">
+            <Label Text="Id"  Grid.Column="0"/>
+            <Label Text="Nome"  Grid.Column="1"/>
+            <Label Text="Qtd"  Grid.Column="2"/>
+            <Label Text="Valor" Grid.Column="3"/>
+            <Label Text="Favorito" Grid.Column="4"/>
+        </Grid>
+        <CollectionView x:Name="produtosList" EmptyView="Sem dados" >
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="1*,2*,1*,1.2*,1*">
+                        <Label Text="{Binding id}" Grid.Column="0" Margin="0, 5, 0, 0"/>
+                        <Label Text="{Binding descricao}" Grid.Column="1" Margin="0, 5, 0, 0"/>
+                        <Label Text="{Binding quantidade}" Grid.Column="2" Margin="0, 5, 0, 0"/>
+                        <Label Text="{Binding valor, StringFormat='{0:c}'}" Grid.Column="3" Margin="0, 5, 0, 0"/>
+                        <Button Text="*" TextColor="{Binding cor}" Clicked="OnSelectId"  FontSize="30" HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="4" WidthRequest="20" HeightRequest="21" Padding="-5" Margin="0, 5, 0, 5" ></Button>
+                        <Line Stroke="Black" X2="350" Grid.Column="0" Grid.ColumnSpan="5"></Line>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
